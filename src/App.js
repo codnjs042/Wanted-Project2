@@ -1,6 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import instance from './network/fetch';
 
 function App() {
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const data = await instance("KRW", "USD", 1000);
+            console.log("data", data);
+            console.log("환율: ", data.result, " 기준일: ", data.date);
+        } catch (error) {
+            console.error("error", error);
+        }
+    };
+    fetchData();
+}, []);
+
   return (
     <div style={{backgroundColor:"LightGray", fontSize: "20px", display:"flex"}}>
       <div style={{backgroundColor:"white", border:"5px solid", margin: "8% auto"}}>
