@@ -15,6 +15,7 @@ const exRateSlice = createSlice({
         replaceTab: (state, action) => {
             state.base_curr=action.payload;
             state.quote_currs=state.currs.filter(item => item !== state.base_curr);
+            state.quote_curr=state.quote_currs[0];
         },
         updateQC: (state, action) => {
             state.quote_curr=action.payload;
